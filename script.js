@@ -34,15 +34,15 @@ updateDate();
 
 function selectCity(event){
 
-
+ clearInterval(updateClock);
     
     let selectTarget=event.target.value;
     let mainElementCall=document.querySelector("main")
     // let targetCity=document.querySelector("#select option")
     let momentLibrary=moment().tz(selectTarget);
 
-let selectedOption = event.target.options[event.target.selectedIndex];
-let cityName = selectedOption.textContent;
+    let selectedOption = event.target.options[event.target.selectedIndex];
+    let cityName = selectedOption.textContent;
 
 
     mainElementCall.innerHTML=`
@@ -57,7 +57,19 @@ let cityName = selectedOption.textContent;
     </div>
 
 `
+    
+    window.cityInterval = setInterval(() => {
+        let updatedTime = moment().tz(selectTarget).format("hh:mm:ss [<small>]A[</small>]");
+        let mainLeft4 = document.querySelector("#main-left4 h3");
+        if (mainLeft4) {
+            mainLeft4.innerHTML = updatedTime;
 
-}
+        let mainRight4=document.querySelector("#main-right4 span")
+        let forthDate=moment().tz(selectTarget).format("dddd, MMMM Do YYYY")
+        if(mainRight4){
+            mainRight4.innerHTML=forthDate
+        }
+        }
+    }, 1000);}
 let selectElementChanged=document.querySelector("#select")
 selectElementChanged.addEventListener("change",selectCity)
