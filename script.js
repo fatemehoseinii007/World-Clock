@@ -11,6 +11,53 @@ function updateClock() {
     let thirdTime=moment().tz("Europe/Zurich").format("hh:mm:ss [<small>]A[</small>]")
     mainLeft3.innerHTML=thirdTime
 
-}
+};
 updateClock();
 setInterval(updateClock, 1000);
+
+function updateDate(){
+    let mainRight1=document.querySelector("#main-right1 span")
+    let firstDate=moment().tz("Asia/Tehran").format("dddd, MMMM Do YYYY")
+    mainRight1.innerHTML=firstDate
+   
+    let mainRight2=document.querySelector("#main-right2 span")
+    let secondDate=moment().tz("Africa/Cairo").format("dddd, MMMM Do YYYY")
+    mainRight2.innerHTML=secondDate
+    
+    let mainRight3=document.querySelector("#main-right3 span")
+    let thirdDate=moment().tz("Europe/Zurich").format("dddd, MMMM Do YYYY")
+    mainRight3.innerHTML=thirdDate
+
+};
+updateDate();
+
+
+function selectCity(event){
+
+
+    
+    let selectTarget=event.target.value;
+    let mainElementCall=document.querySelector("main")
+    // let targetCity=document.querySelector("#select option")
+    let momentLibrary=moment().tz(selectTarget);
+
+let selectedOption = event.target.options[event.target.selectedIndex];
+let cityName = selectedOption.textContent;
+
+
+    mainElementCall.innerHTML=`
+    <div class="forth-contry">
+        <div class="main-right" id="main-right4">
+            <h4>${cityName} </h4>
+            <span>${momentLibrary.format("dddd, MMMM Do YYYY")}</span>
+        </div>
+        <div class="main-left" id="main-left4">
+            <h3> ${momentLibrary.format("hh:mm:ss [<small>]A[</small>]")}</h3>
+        </div>
+    </div>
+
+`
+
+}
+let selectElementChanged=document.querySelector("#select")
+selectElementChanged.addEventListener("change",selectCity)

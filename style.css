@@ -44,7 +44,8 @@ select{
 
 .first-contry,
 .second-contry,
-.third-contry{
+.third-contry,
+.forth-contry{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,7 +54,8 @@ select{
     padding-bottom: 0.5rem;
 }
 
-.third-contry:last-child{
+.third-contry,
+.forth-contry:last-child{
     border: 0;
 }
 
