@@ -1,17 +1,20 @@
 function updateClock() {
 
     let mainLeft1 = document.querySelector("#main-left1 h3");
+      if (mainLeft1){
     let firstTime = moment().tz("Asia/Tehran").format("hh:mm:ss [<small>]A[</small>]");
-    if (mainLeft1) mainLeft1.innerHTML = firstTime;
-
+     mainLeft1.innerHTML = firstTime;
+}
     let mainLeft2=document.querySelector("#main-left2 h3")
+    if (mainLeft2){
     let secondTime=moment().tz("Africa/Cairo").format("hh:mm:ss [<small>]A[</small>]")
-    if (mainLeft2) mainLeft2.innerHTML=secondTime
-
+    mainLeft2.innerHTML=secondTime
+}
     let mainLeft3=document.querySelector("#main-left3 h3")
+    if (mainLeft3){
     let thirdTime=moment().tz("Europe/Zurich").format("hh:mm:ss [<small>]A[</small>]")
-    if (mainLeft3) mainLeft3.innerHTML=thirdTime
-
+     mainLeft3.innerHTML=thirdTime
+}
 };
 updateClock();
 window.clockInterval=setInterval(updateClock, 1000);
@@ -34,13 +37,20 @@ updateDate();
 
 
 function selectCity(event){
-    
+    event.preventDefault()
     let selectTarget=event.target.value;
     let mainElementCall=document.querySelector("main")
+        if(selectTarget=="current"){
+        selectTarget=moment.tz.guess()
+    }
     let momentLibrary=moment().tz(selectTarget);
     let selectedOption = event.target.options[event.target.selectedIndex];
     let cityName = selectedOption.textContent;
    
+   if(selectedOption.value == "current") {
+        cityName = selectTarget.split("/")[1];
+    }
+
     mainElementCall.innerHTML=`
     <div class="forth-contry">
         <div class="main-right" id="main-right4">
