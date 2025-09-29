@@ -61,8 +61,9 @@ function selectCity(event){
             <h3> ${momentLibrary.format("hh:mm:ss [<small>]A[</small>]")}</h3>
         </div>
     </div>
-
+    <a href="#" onclick="window.location.reload()">Back to all cities</a>
 `
+console.log(window.location)
 if (window.clockInterval) {
   clearInterval(window.clockInterval);
 }

@@ -54,8 +54,7 @@ select{
     padding-bottom: 0.5rem;
 }
 
-.third-contry,
-.forth-contry:last-child{
+.third-contry:last-child{
     border: 0;
 }
 
