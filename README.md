@@ -1,4 +1,4 @@
-# ⏰ ساعت جهانی
+# ⏰ پیش نمایش
 
 ![پیش نمایش ساعت جهانی](https://world-clock-momentlibrary.netlify.app/)
 
